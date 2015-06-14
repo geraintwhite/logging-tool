@@ -1,0 +1,22 @@
+{
+  "name": "logging-tool",
+  "version": "1.0.0",
+  "description": "Colourful logging module with different logging levels",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:grit96/logging-tool.git"
+  },
+  "author": "Geraint White <geraintwhite@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/grit96/logging-tool/issues"
+  },
+  "homepage": "https://github.com/grit96/logging-tool#readme",
+  "dependencies": {
+    "colors": "^1.1.0"
+  }
+}
