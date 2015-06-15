@@ -1,6 +1,6 @@
 {
   "name": "logging-tool",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Colourful logging module with different logging levels",
   "main": "index.js",
   "scripts": {
