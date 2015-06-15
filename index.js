@@ -1,7 +1,8 @@
 var util = require('util'),
     colors = require('colors');
 
-module.exports = function (silent) {
+
+module.exports = (function () {
   function getTimeStamp () {
     var x = new Date();
 
@@ -37,7 +38,6 @@ module.exports = function (silent) {
    * @function
    */
   logging.info = function () {
-    if (silent) return;
     console.info(colors.cyan.bold('[{}] Info {}'.format(getTimeStamp(), getCallingMethod())));
     console.info(colors.cyan(stringifyArgs(arguments)), '\n');
   };
@@ -48,7 +48,6 @@ module.exports = function (silent) {
    * @function
    */
   logging.warn = function () {
-    if (silent) return;
     console.warn(colors.yellow.bold('[{}] Warning {}'.format(getTimeStamp(), getCallingMethod())));
     console.warn(colors.yellow(stringifyArgs(arguments)), '\n');
   };
@@ -59,7 +58,6 @@ module.exports = function (silent) {
    * @function
    */
   logging.log = function () {
-    if (silent) return;
     console.log(colors.white.bold('[{}] Log {}'.format(getTimeStamp(), getCallingMethod())));
     console.log(colors.white(stringifyArgs(arguments)), '\n');
   };
@@ -70,10 +68,9 @@ module.exports = function (silent) {
    * @function
    */
   logging.error = function () {
-    if (silent) return;
     console.error(colors.red.bold('[{}] Error {}'.format(getTimeStamp(), getCallingMethod())));
     console.error(colors.red(stringifyArgs(arguments)), '\n');
   };
 
   return logging;
-};
+})();
