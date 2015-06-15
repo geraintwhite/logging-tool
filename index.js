@@ -1,5 +1,6 @@
 var util = require('util'),
-    colors = require('colors');
+    colors = require('colors'),
+    format = require('string-format');
 
 
 module.exports = (function () {
@@ -9,8 +10,8 @@ module.exports = (function () {
     var m = x.getMinutes(),
         s = x.getSeconds();
 
-    return '{}/{}/{} {}:{}:{}'
-      .format(x.getFullYear(), x.getMonth() + 1, x.getDate(), x.getHours(),
+    return format('{}/{}/{} {}:{}:{}',
+              x.getFullYear(), x.getMonth() + 1, x.getDate(), x.getHours(),
               m > 10 ? m : '0' + m, s > 10 ? s : '0' + s);
   }
 
@@ -31,6 +32,7 @@ module.exports = (function () {
   }
 
   var logging = {};
+  logging.debug = true;
 
   /**
    * Log arguments on the `info` logging level
@@ -38,7 +40,8 @@ module.exports = (function () {
    * @function
    */
   logging.info = function () {
-    console.info(colors.cyan.bold('[{}] Info {}'.format(getTimeStamp(), getCallingMethod())));
+    if (logging.silent) return;
+    console.info(colors.cyan.bold(format('[{}] Info {}', getTimeStamp(), getCallingMethod())));
     console.info(colors.cyan(stringifyArgs(arguments)), '\n');
   };
 
@@ -48,7 +51,8 @@ module.exports = (function () {
    * @function
    */
   logging.warn = function () {
-    console.warn(colors.yellow.bold('[{}] Warning {}'.format(getTimeStamp(), getCallingMethod())));
+    if (logging.silent) return;
+    console.warn(colors.yellow.bold(format('[{}] Warning {}', getTimeStamp(), getCallingMethod())));
     console.warn(colors.yellow(stringifyArgs(arguments)), '\n');
   };
 
@@ -58,7 +62,8 @@ module.exports = (function () {
    * @function
    */
   logging.log = function () {
-    console.log(colors.white.bold('[{}] Log {}'.format(getTimeStamp(), getCallingMethod())));
+    if (!logging.debug || logging.silent) return;
+    console.log(colors.white.bold(format('[{}] Log {}', getTimeStamp(), getCallingMethod())));
     console.log(colors.white(stringifyArgs(arguments)), '\n');
   };
 
@@ -68,7 +73,8 @@ module.exports = (function () {
    * @function
    */
   logging.error = function () {
-    console.error(colors.red.bold('[{}] Error {}'.format(getTimeStamp(), getCallingMethod())));
+    if (logging.silent) return;
+    console.error(colors.red.bold(format('[{}] Error {}', getTimeStamp(), getCallingMethod())));
     console.error(colors.red(stringifyArgs(arguments)), '\n');
   };
 
