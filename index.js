@@ -31,47 +31,50 @@ module.exports = (function () {
     return new Error().stack.split('\n')[3].trim();
   }
 
-  var logging = {};
-  logging.debug = true;
 
   /**
-   * Log arguments on the `info` logging level
-   * @name info
-   * @function
+   * logging
+   *
+   * Usage:
+   *
+   * ```js
+   * var logging = require('logging-tool');
+   * ```
+   *
+   * @return {Object} Logging object containing the following fields:
+   *
+   *  - `debug` (Boolean): Show `logging.log` output if true (default true)
+   *  - `silent` (Boolean): Don't show any output if true (default false)
+   *  - `log` (Function): Log arguments on the default logging level
+   *  - `info` (Function): Log arguments on the `info` logging level
+   *  - `warn` (Function): Log arguments on the `warn` logging level
+   *  - `error` (Function): Log arguments on the `error` logging level
    */
+
+
+  var logging = {
+    debug: true,
+    silent: false
+  };
+
   logging.info = function () {
     if (logging.silent) return;
     console.info(colors.cyan.bold(format('[{}] Info {}', getTimeStamp(), getCallingMethod())));
     console.info(colors.cyan(stringifyArgs(arguments)), '\n');
   };
 
-  /**
-   * Log arguments on the `warn` logging level
-   * @name warn
-   * @function
-   */
   logging.warn = function () {
     if (logging.silent) return;
     console.warn(colors.yellow.bold(format('[{}] Warning {}', getTimeStamp(), getCallingMethod())));
     console.warn(colors.yellow(stringifyArgs(arguments)), '\n');
   };
 
-  /**
-   * Log arguments on the default logging level
-   * @name log
-   * @function
-   */
   logging.log = function () {
     if (!logging.debug || logging.silent) return;
     console.log(colors.white.bold(format('[{}] Log {}', getTimeStamp(), getCallingMethod())));
     console.log(colors.white(stringifyArgs(arguments)), '\n');
   };
 
-  /**
-   * Log arguments on the `error` logging level
-   * @name error
-   * @function
-   */
   logging.error = function () {
     if (logging.silent) return;
     console.error(colors.red.bold(format('[{}] Error {}', getTimeStamp(), getCallingMethod())));
