@@ -1,6 +1,8 @@
 # logging-tool
 Colourful logging module with different logging levels
 
+![Logging levels](http://cdn.dvbris.com/logging-tool.png)
+
 ## Installation
 
 ```sh
@@ -19,7 +21,6 @@ Log arguments on the default logging level
 
 ## `error()`
 Log arguments on the `error` logging level
-
 
 
 ## How to contribute
