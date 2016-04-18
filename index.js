@@ -12,7 +12,7 @@ module.exports = (function () {
 
     return format('{}/{}/{} {}:{}:{}',
               x.getFullYear(), x.getMonth() + 1, x.getDate(), x.getHours(),
-              m > 10 ? m : '0' + m, s > 10 ? s : '0' + s);
+              m >= 10 ? m : '0' + m, s >= 10 ? s : '0' + s);
   }
 
   function stringifyArgs (args) {
