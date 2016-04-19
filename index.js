@@ -1,18 +1,12 @@
 var util = require('util'),
     colors = require('colors'),
+    dateformat = require('dateformat'),
     format = require('string-format');
 
 
 module.exports = (function () {
   function getTimeStamp () {
-    var x = new Date();
-
-    var m = x.getMinutes(),
-        s = x.getSeconds();
-
-    return format('{}/{}/{} {}:{}:{}',
-              x.getFullYear(), x.getMonth() + 1, x.getDate(), x.getHours(),
-              m >= 10 ? m : '0' + m, s >= 10 ? s : '0' + s);
+    return dateformat(Date(), 'yyyy/mm/dd hh:MM:ss');
   }
 
   function stringifyArgs (args) {
