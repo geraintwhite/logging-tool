@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:grit96/logging-tool.git"
+    "url": "git@github.com:geraintwhite/logging-tool.git"
   },
   "author": "Geraint White <geraintwhite@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/grit96/logging-tool/issues"
+    "url": "https://github.com/geraintwhite/logging-tool/issues"
   },
-  "homepage": "https://github.com/grit96/logging-tool#readme",
+  "homepage": "https://github.com/geraintwhite/logging-tool#readme",
   "dependencies": {
     "colors": "^1.1.2",
     "dateformat": "^3.0.0",
